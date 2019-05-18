@@ -1,0 +1,17 @@
+Source: stsbl-iserv-dns-over-tls
+Section: misc
+Priority: optional
+Maintainer: Stadtteilschule Blankenese <repository@stsbl.de>
+Build-Depends: debhelper (>= 10)
+Build-Depends-Indep: iserv3-dev
+Standards-Version: 4.3.0
+
+Package: stsbl-iserv-dns-over-tls
+Architecture: all
+Depends: ${misc:Depends},
+  ${perl:Depends},
+  stsbl-iserv-server-stunnel,
+Description: IServ Unterstützung für verschlüsseltes DNS
+ Erlaubt das Abfragen des DNS-Servers auf dem IServ per verschlüsselter
+ Verbindung über DNS-over-TLS.
+Tag: suite::iserv:portal, role::plugin
