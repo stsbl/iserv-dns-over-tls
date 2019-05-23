@@ -1,2 +1,3 @@
 # by design
 stsbl-iserv-dns-over-tls: extra-license-file usr/share/doc/stsbl-iserv-dns-over-tls/LICENSE
+stsbl-iserv-dns-over-tls: diversion-for-unknown-file etc/resolvconf/update.d/bind preinst:7
