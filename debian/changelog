@@ -1,3 +1,9 @@
+stsbl-iserv-dns-over-tls (19.05.23-2) unstable; urgency=medium
+
+  * Added linitian overwrite
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Thu, 23 May 2019 06:26:19 +0200
+
 stsbl-iserv-dns-over-tls (19.05.23-1) unstable; urgency=medium
 
   * Added support for upstream DNS over TLS via unbound
