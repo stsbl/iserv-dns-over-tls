@@ -12,25 +12,32 @@ Usage: $0 [options]
 --enabled, -e   Check if it at least for one server in resolvconf is whitelisted
                 for DNS over tls. Will exit with code 1 if not.
 --help, -h      Show this help
+--unbound, -u   Print list of DNS over TLS servers in unbound forwarders style.
 EOT
 
 }
 
-GetOptions(\my %opts,
+GetOptions(\my %opt,
   "enabled|e",
-  "help|h"
+  "help|h",
+  "unbound|u"
 ) or help and exit 1;
 
-if ($opts{enabled})
+if ($opt{enabled})
 {
   my %current = GetCurrentNameservers;
   exit if grep { $current{$_} == 1; } keys %current;
   exit 1;
 }
-elsif ($opts{help})
+elsif ($opt{help})
 {
   help;
   exit;
+}
+elsif ($opt{unbound})
+{
+  my %current = GetCurrentNameservers;
+  print "$_\@853\n" for grep { $current{$_} == 1; } keys %current;
 }
 
 my $state = GetNameserverState;

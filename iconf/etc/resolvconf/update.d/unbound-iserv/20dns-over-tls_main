@@ -9,7 +9,7 @@ then
 
   if [ -n "$TLS_SERVERS" ]
   then
-    CURRENT+=" $(for ip in $TLS_SERVERS; do echo "$ip@853"; done |tr '\n' ' ')"
+    CURRENT="$(/usr/lib/iserv/dns-over-tls_ip_intersect -u)"
     unbound-control forward $CURRENT 1>/dev/null 2>&1 || true
   fi
 fi
