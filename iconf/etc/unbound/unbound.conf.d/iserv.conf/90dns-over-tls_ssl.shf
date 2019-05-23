@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if /usr/lib/iserv/dns-over-tls_ip_intersect -e
+then
+  sed -E -r -e 's/^(\s*)ssl-upstream:(.+)$/\1ssl-upstream: yes/g' \
+      -e 's/^(\s*)tcp-upstream:(.+)$/\1tcp-upstream: yes/g'
+else
+  cat
+fi

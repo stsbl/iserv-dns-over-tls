@@ -10,7 +10,13 @@ Package: stsbl-iserv-dns-over-tls
 Architecture: all
 Depends: ${misc:Depends},
   ${perl:Depends},
+  libdata-compare-perl,
+  libjson-perl,
+  libnet-ip-perl,
+  libpath-tiny-perl,
+  resolvconf,
   stsbl-iserv-server-stunnel,
+  stsbl-iserv-server-unbound,
 Description: IServ Unterstützung für verschlüsseltes DNS
  Erlaubt das Abfragen des DNS-Servers auf dem IServ per verschlüsselter
  Verbindung über DNS-over-TLS.

@@ -1,0 +1,16 @@
+PATH=/usr/sbin:/usr/bin:/sbin:/bin
+
+# Check which forwarders in unbound are whitelisted for using DNS-over-TLS
+CURRENT=$(unbound-control list_forwards | sed -E 's/^\. IN forward //g')
+
+if [ -n "$CURRENT" ]
+then
+  TLS_SERVERS="$(/usr/lib/iserv/dns-over-tls_ip_intersect $CURRENT)"
+
+  if [ -n "$TLS_SERVERS" ]
+  then
+    CURRENT+=" $(for ip in $TLS_SERVERS; do echo "$ip@853"; done |tr '\n' ' ')"
+    unbound-control forward $CURRENT 1>/dev/null 2>&1 || true
+  fi
+fi
+

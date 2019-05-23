@@ -1,0 +1,41 @@
+#!/usr/bin/perl -CSDAL
+
+use warnings;
+use strict;
+use Getopt::Long;
+use IServ::DNSOverTLS;
+
+sub help()
+{
+  print <<EOT;
+Usage: $0 [options]
+--enabled, -e   Check if it at least for one server in resolvconf is whitelisted
+                for DNS over tls. Will exit with code 1 if not.
+--help, -h      Show this help
+EOT
+
+}
+
+GetOptions(\my %opts,
+  "enabled|e",
+  "help|h"
+) or help and exit 1;
+
+if ($opts{enabled})
+{
+  my %current = GetCurrentNameservers;
+  exit if grep { $current{$_} == 1; } keys %current;
+  exit 1;
+}
+elsif ($opts{help})
+{
+  help;
+  exit;
+}
+
+my $state = GetNameserverState;
+
+for (@ARGV)
+{
+  print "$_\n" if exists $state->{$_} and $state->{$_} == 1;
+}

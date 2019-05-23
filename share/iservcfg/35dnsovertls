@@ -1,0 +1,58 @@
+#!/usr/bin/perl -CSDAL
+
+use warnings;
+use strict;
+use Data::Compare;
+use IServ::Dialog qw(confirm menu);
+use IServ::DNSOverTLS;
+
+my $TITLE = "Sichere DNS-Server";
+
+$IServ::Dialog::backtitle = "IServ-Konfiguration > $TITLE";
+
+sub format_bool($)
+{
+  "Sicheres DNS " . ($_[0] ? "aktiviert" : "deaktiviert");
+}
+
+sub system_v(@)
+{
+  print "@_\n";
+  system @_;
+}
+
+my %nameservers = my %orig_nameservers = GetCurrentNameservers;
+my $sel;
+
+while (1)
+{
+  my $changes = not Compare \%orig_nameservers, \%nameservers;
+
+  my @menu;
+  push @menu, $_ => format_bool $nameservers{$_} for sort keys %nameservers;
+  push @menu, "-" => "-";
+  push @menu, "save" => "Speichern und beenden" if $changes;
+  push @menu, "exit" => "Beenden";
+
+  $sel = menu $TITLE, $sel, @menu;
+
+  if (not $sel or $sel eq "exit")
+  {
+    last;
+  }
+  elsif ($sel eq "save")
+  {
+    SetNameserverState \%nameservers;
+    system_v "iservchk", "unbound";
+    last;
+  }
+  elsif ($sel ne "-")
+  {
+    if (confirm "Sicheres DNS für Nameserver $sel " .
+        ($nameservers{$sel} ? "deaktivieren" : "aktivieren") . "?"
+    )
+    {
+      $nameservers{$sel} = not $nameservers{$sel};
+    }
+  }
+}

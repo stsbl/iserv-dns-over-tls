@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+if [ install = "$1" -o upgrade = "$1" ] && ! dpkg-divert --list | grep -F "/etc/resolvconf/update.d/bind.distrib"
+then
+  dpkg-divert --add --rename \
+     --divert /etc/resolvconf/update.d/bind.distrib /etc/resolvconf/update.d/bind
+fi
+
+#DEBHELPER#
