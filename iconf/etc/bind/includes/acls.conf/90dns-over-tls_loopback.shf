@@ -1,0 +1,29 @@
+#!/bin/bash
+
+COUNT=1
+IFS=$'\n'
+SEDARGS=()
+
+while read line
+do
+  IFS=' ' out=($line)
+  SEDARGS+=("-e" "s#^(acl \"acl-${out[1]}-restricted\" \\{ )(.+)#\\1127.0.3.$COUNT/32; \\2#g")
+  let COUNT++
+done < <(netquery -p "ip if")
+
+if [ -x "/usr/sbin/netquery6" ]
+then
+  while read line
+  do
+    IFS=' ' out=($line)
+    SEDARGS+=("-e" "s#^(acl \"acl-${out[1]}-restricted\" \\{ )(.+)#\\1127.0.3.$COUNT/32; \\2#g")
+    let COUNT++
+  done < <(netquery6 -gul "ip nic")
+fi
+
+if [ -n "$SEDARGS" ]
+then
+  sed -r -E "${SEDARGS[@]}"
+else
+  cat
+fi

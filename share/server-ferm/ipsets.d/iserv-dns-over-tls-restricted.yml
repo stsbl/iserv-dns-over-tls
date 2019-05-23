@@ -1,0 +1,6 @@
+Files: ~
+Directories:
+  - /var/lib/iserv/portal/bind.restricted-ips.d
+Type: "hash:ip"
+ExecFetch: ~
+
