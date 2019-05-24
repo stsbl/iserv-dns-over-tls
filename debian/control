@@ -32,7 +32,7 @@ Architecture: all
 Depends: ${misc:Depends},
   ${perl:Depends},
   iserv-update,
-  stsbl-iserv-dns-over-tls,
+  stsbl-iserv-server-stunnel,
 Breaks: stsbl-iserv-dns-over-tls (<= 19.05.24),
 Replaces: stsbl-iserv-dns-over-tls (<= 19.05.24),
 Xb-Private-IServ-Revision: ${iserv:Revision}
