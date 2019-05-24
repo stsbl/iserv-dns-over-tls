@@ -1,3 +1,12 @@
+stsbl-iserv-dns-over-tls (19.05.24-1) unstable; urgency=medium
+
+  * Added initial version of support for restricted IPs (ipset update
+    mechanism is still missing)
+  * Split packages into normal one and one providing tls tunnel for standalone
+    use
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Fri, 24 May 2019 13:02:42 +0200
+
 stsbl-iserv-dns-over-tls (19.05.23-3) unstable; urgency=medium
 
   * unbound: Added explicit ports for ::1, only add DNS over TLS servers to
