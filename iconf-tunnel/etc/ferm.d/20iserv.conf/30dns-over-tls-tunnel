@@ -1,2 +1,2 @@
-domain (ip ip6) table filter chain input_lan proto tcp dport (853 10853) ACCEPT;
+domain (ip ip6) table filter chain input_lan proto tcp dport (853) ACCEPT;
 

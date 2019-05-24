@@ -1,2 +1,3 @@
+domain (ip ip6) table filter chain input_lan proto tcp dport (10853) ACCEPT;
 domain (ip) table nat chain prerouting_first mod set set iserv-dns-over-tls-restricted src proto tcp dport 853 REDIRECT to-ports 10853;
 domain (ip6) table nat chain prerouting_first mod set set iserv-dns-over-tls-restricted6 src proto tcp dport 853 REDIRECT to-ports 10853;
