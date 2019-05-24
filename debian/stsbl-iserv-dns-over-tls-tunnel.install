@@ -1,0 +1,2 @@
+iconf-tunnel/* usr/share/iserv/iconf
+iservchk-tunnel/* usr/share/iserv/iconf/etc/iserv/chk.d

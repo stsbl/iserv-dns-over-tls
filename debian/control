@@ -10,14 +10,35 @@ Package: stsbl-iserv-dns-over-tls
 Architecture: all
 Depends: ${misc:Depends},
   ${perl:Depends},
+  iserv-update,
   libdata-compare-perl,
   libjson-perl,
   libnet-ip-perl,
   libpath-tiny-perl,
   resolvconf,
-  stsbl-iserv-server-stunnel,
+  stsbl-iserv-dns-over-tls-tunnel (= ${source:Version}),
   stsbl-iserv-server-unbound,
+Xb-Private-IServ-Revision: ${iserv:Revision}
 Description: IServ Unterstützung für verschlüsseltes DNS
  Erlaubt das Abfragen des DNS-Servers auf dem IServ per verschlüsselter
  Verbindung über DNS-over-TLS.
+ .
+ Dieses Paket enthält die Unterstützung für Weiterleitung verschlüsselter
+ DNS-Abfragen aus dem lokalen Netzwerk über einen Unbound-Upstream-Server.
 Tag: suite::iserv:portal, role::plugin
+
+Package: stsbl-iserv-dns-over-tls-tunnel
+Architecture: all
+Depends: ${misc:Depends},
+  ${perl:Depends},
+  iserv-update,
+  stsbl-iserv-dns-over-tls,
+Breaks: stsbl-iserv-dns-over-tls (<= 19.05.24),
+Replaces: stsbl-iserv-dns-over-tls (<= 19.05.24),
+Xb-Private-IServ-Revision: ${iserv:Revision}
+Description: IServ Unterstützung für verschlüsseltes DNS
+ Erlaubt das Abfragen des DNS-Servers auf dem IServ per verschlüsselter
+ Verbindung über DNS-over-TLS.
+ .
+ Dieses Paket ermöglicht den Zugriff auf einen lokalen DNS-Server über einen
+ TLS-Tunnel.
