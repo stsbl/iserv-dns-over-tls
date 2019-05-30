@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+
+chkipsets -r -q iserv-dns-over-tls-restricted

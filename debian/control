@@ -11,6 +11,8 @@ Architecture: all
 Depends: ${misc:Depends},
   ${perl:Depends},
   iserv-update,
+  iserv-server-incron,
+  iserv-server-ferm (>= 19.05.14),
   libdata-compare-perl,
   libjson-perl,
   libnet-ip-perl,
