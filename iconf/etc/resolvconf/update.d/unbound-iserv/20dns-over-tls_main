@@ -1,7 +1,7 @@
 PATH=/usr/sbin:/usr/bin:/sbin:/bin
 
 # Check which forwarders in unbound are whitelisted for using DNS-over-TLS
-CURRENT=$(unbound-control list_forwards | sed -E 's/^\. IN forward //g')
+CURRENT=$(unbound-control list_forwards | sed -E -e '/^[^\. ][^ ]+\sIN\sforward/d' -e 's/^\. IN forward //g')
 
 if [ -n "$CURRENT" ]
 then
