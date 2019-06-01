@@ -2,11 +2,13 @@
 
 use warnings;
 use strict;
+use Clone qw(clone);
 use Data::Compare;
-use IServ::Dialog qw(confirm menu);
+use IServ::Dialog qw(confirm inputbox menu);
 use IServ::DNSOverTLS;
 
 my $TITLE = "Sichere DNS-Server";
+my $m_hostname = qr/^((([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]))?$/;
 
 $IServ::Dialog::backtitle = "IServ-Konfiguration > $TITLE";
 
@@ -20,8 +22,9 @@ sub system_v(@)
   print "@_\n";
   system @_;
 }
+my %orig_nameservers = GetCurrentNameservers;
+my %nameservers = %{ clone \%orig_nameservers };
 
-my %nameservers = my %orig_nameservers = GetCurrentNameservers;
 my $sel;
 
 while (1)
@@ -29,7 +32,7 @@ while (1)
   my $changes = not Compare \%orig_nameservers, \%nameservers;
 
   my @menu;
-  push @menu, $_ => format_bool $nameservers{$_} for sort keys %nameservers;
+  push @menu, $_ => format_bool $nameservers{$_}{activate} for sort keys %nameservers;
   push @menu, "-" => "-";
   push @menu, "save" => "Speichern und beenden" if $changes;
   push @menu, "exit" => "Beenden";
@@ -44,15 +47,37 @@ while (1)
   {
     SetNameserverState \%nameservers;
     system_v "iservchk", "unbound";
+    system_v "resolvconf", "-u";
     last;
   }
   elsif ($sel ne "-")
   {
-    if (confirm "Sicheres DNS für Nameserver $sel " .
-        ($nameservers{$sel} ? "deaktivieren" : "aktivieren") . "?"
-    )
+    my $subsel;
+
+    while (1)
     {
-      $nameservers{$sel} = not $nameservers{$sel};
+      my @submenu;
+      push @submenu, "active" => format_bool $nameservers{$sel}{activate};
+      push @submenu, "hostname" => $nameservers{$sel}{hostname} // "-";
+      push @submenu, "-" => "-";
+      push @submenu, "back" => "Zurück";
+
+      $subsel = menu "DNS-Server $sel bearbeiten", $subsel, @submenu;
+
+      if (not $subsel or $subsel eq "back")
+      {
+        last;
+      }
+      elsif ($subsel eq "active" and confirm "Sicheres DNS für Nameserver $sel " .
+          ($nameservers{$sel}{activate} ? "deaktivieren" : "aktivieren") . "?")
+      {
+        $nameservers{$sel}{activate} = not $nameservers{$sel}{activate};
+      }
+      elsif ($subsel eq "hostname")
+      {
+        $nameservers{$sel}{hostname} = inputbox "Hostname",
+            $nameservers{$sel}{hostname}, $m_hostname;
+      }
     }
   }
 }

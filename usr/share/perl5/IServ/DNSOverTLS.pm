@@ -43,7 +43,7 @@ sub GetNameserverState()
 
   for (keys %$nameservers)
   {
-    $nameservers->{$_} = $nameservers->{$_} eq JSON::true ? 1 : 0;
+    $nameservers->{$_}->{activate} = ($nameservers->{$_}->{activate} // undef) eq JSON::true ? 1 : 0;
   }
 
   $nameservers;
@@ -75,10 +75,10 @@ sub GetCurrentNameservers()
 sub SetNameserverState(%)
 {
   my %nameservers = %{ $_[0] };
-  my %nameservers_save;
-  $nameservers_save{$_} = $nameservers{$_} ? JSON::true : JSON::false for keys %nameservers;
+  $nameservers{$_}{activate} = $nameservers{$_}{activate} ?
+     JSON::true : JSON::false for keys %nameservers;
 
-  path($fn_nameservers)->spew_utf8($json->encode(\%nameservers_save));
+  path($fn_nameservers)->spew_utf8($json->encode(\%nameservers));
 }
 
 1;

@@ -1,0 +1,20 @@
+#!/usr/bin/perl -CSDAL
+
+use warnings;
+use strict;
+use JSON;
+use Path::Tiny;
+
+my $fn_nameservers = "/var/lib/iserv/dns-over-tls/nameservers.json";
+my $json = JSON->new->utf8->canonical([1]);
+
+my $legacy_nameservers = $json->decode(path($fn_nameservers)->slurp_utf8());
+my %nameservers;
+
+for (sort keys %$legacy_nameservers)
+{
+  my %value = (activate => $legacy_nameservers->{$_}, hostname => undef);
+  $nameservers{$_} = \%value;
+}
+
+path($fn_nameservers)->spew_utf8($json->encode(\%nameservers));

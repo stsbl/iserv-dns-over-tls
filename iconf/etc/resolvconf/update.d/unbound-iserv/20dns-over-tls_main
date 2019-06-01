@@ -5,11 +5,9 @@ CURRENT=$(unbound-control list_forwards | sed -E 's/^\. IN forward //g')
 
 if [ -n "$CURRENT" ]
 then
-  TLS_SERVERS="$(/usr/lib/iserv/dns-over-tls_ip_intersect $CURRENT)"
-
-  if [ -n "$TLS_SERVERS" ]
+  if /usr/lib/iserv/dns-over-tls_ip_intersect -e $CURRENT
   then
-    CURRENT="$(/usr/lib/iserv/dns-over-tls_ip_intersect -u)"
+    CURRENT="$(/usr/lib/iserv/dns-over-tls_ip_intersect -u $CURRENT)"
     unbound-control forward $CURRENT 1>/dev/null 2>&1 || true
   fi
 fi

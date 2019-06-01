@@ -1,0 +1,10 @@
+Test "upgrade secure nameservers list"
+  grep -q ^10dns-over-tls_convert$ /var/lib/iserv/config/update.log
+  ---
+  set -e
+  if [ -f "/var/lib/iserv/dns-over-tls/nameservers.json" ]
+  then
+    /usr/share/iserv/upgrade/dns-over-tls_format
+  fi
+  echo 10dns-over-tls_convert >> /var/lib/iserv/config/update.log
+

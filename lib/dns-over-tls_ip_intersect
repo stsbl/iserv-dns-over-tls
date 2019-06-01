@@ -26,7 +26,7 @@ GetOptions(\my %opt,
 if ($opt{enabled})
 {
   my %current = GetCurrentNameservers;
-  exit if grep { $current{$_} == 1; } keys %current;
+  exit if grep { $current{$_}{activate}; } sort @ARGV;
   exit 1;
 }
 elsif ($opt{help})
@@ -37,12 +37,17 @@ elsif ($opt{help})
 elsif ($opt{unbound})
 {
   my %current = GetCurrentNameservers;
-  print "$_\@853\n" for grep { $current{$_} == 1; } keys %current;
+  do {
+    print "$_\@853";
+    print "#$current{$_}{hostname}" if $current{$_}{hostname};
+    print "\n";
+  } for grep { $current{$_}{activate}; } sort @ARGV;
+  exit;
 }
 
 my $state = GetNameserverState;
 
-for (@ARGV)
+for (sort @ARGV)
 {
-  print "$_\n" if exists $state->{$_} and $state->{$_} == 1;
+  print "$_\n" if $state->{$_}->{activate};
 }
