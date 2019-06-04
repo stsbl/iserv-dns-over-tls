@@ -26,7 +26,7 @@ GetOptions(\my %opt,
 if ($opt{enabled})
 {
   my %current = GetCurrentNameservers;
-  exit if grep { $current{$_}{activate}; } sort keys %current;
+  exit 0 if grep { $current{$_}{activate}; } sort keys %current;
   exit 1;
 }
 elsif ($opt{help})

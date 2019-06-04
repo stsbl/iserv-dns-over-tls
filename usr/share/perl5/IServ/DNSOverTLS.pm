@@ -64,9 +64,9 @@ sub GetCurrentNameservers()
   }
 
   my %state = %{ GetNameserverState() };
-  for (keys %state)
+  for (keys %nameservers)
   {
-    $nameservers{$_} = $state{$_} if exists $nameservers{$_};
+    $nameservers{$_} = $state{$_} // { hostname => undef, activate => 0 };
   }
 
   %nameservers;
