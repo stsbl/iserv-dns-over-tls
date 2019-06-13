@@ -1,0 +1,14 @@
+#!/bin/bash
+
+. /usr/lib/iserv/cfg
+
+if [ $DNSSECEnable ]
+then
+  sed -E -r '/^options \{$/,/^(\s+)dnssec-validation\s/ {
+    /^(\s+)dnssec-validation\s/ {
+      s/^(\s+)dnssec-validation\s.+;$/\1dnssec-validation auto;/
+    }
+  }' || cat
+else
+  cat
+fi

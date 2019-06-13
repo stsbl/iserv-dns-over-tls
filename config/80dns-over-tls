@@ -1,0 +1,6 @@
+DNSSECEnable:
+name		Enable DNSSEC validation
+description	This settings toggles the DNSSEC validation of upstream DNS zones.
+group		Network
+type		bool
+default		true
