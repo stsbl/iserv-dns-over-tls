@@ -1,3 +1,10 @@
+stsbl-iserv-dns-over-tls (19.06.14-1) unstable; urgency=medium
+
+  * Fixed error if no nameservers are in state file
+  * Added config option to toggle DNSSEC validation
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Fri, 14 Jun 2019 02:00:04 +0200
+
 stsbl-iserv-dns-over-tls (19.06.02-3) unstable; urgency=medium
 
   * Fixed enabling of DNS over TLS support in unbound
