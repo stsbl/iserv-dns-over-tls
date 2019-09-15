@@ -1,3 +1,9 @@
+stsbl-iserv-dns-over-tls (19.09.15-1) unstable; urgency=medium
+
+  * Changed incrond job for ip list update
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Sun, 15 Sep 2019 19:57:28 +0200
+
 stsbl-iserv-dns-over-tls (19.06.14-1) unstable; urgency=medium
 
   * Fixed error if no nameservers are in state file
