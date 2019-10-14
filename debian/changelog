@@ -1,3 +1,10 @@
+stsbl-iserv-dns-over-tls (19.10.14-1) testing; urgency=medium
+
+  * Bumped copyright
+  * stunnel: Run as unprivileged user
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Mon, 14 Oct 2019 05:42:18 +0200
+
 stsbl-iserv-dns-over-tls (19.09.15-1) unstable; urgency=medium
 
   * Changed incrond job for ip list update
