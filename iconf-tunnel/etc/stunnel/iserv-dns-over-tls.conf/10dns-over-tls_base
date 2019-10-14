@@ -1,0 +1,6 @@
+setuid = stunnel4
+setgid = stunnel4
+
+; PID file is created inside the chroot jail (if enabled)
+pid = /run/stunnel4/iserv-dns-over-tls.pid
+
