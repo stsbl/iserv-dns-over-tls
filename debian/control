@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Stadtteilschule Blankenese <repository@stsbl.de>
 Build-Depends: debhelper (>= 10)
 Build-Depends-Indep: iserv3-dev
-Standards-Version: 4.3.0
+Standards-Version: 4.4.1
 
 Package: stsbl-iserv-dns-over-tls
 Architecture: all
@@ -45,3 +45,4 @@ Description: IServ Unterstützung für verschlüsseltes DNS
  .
  Dieses Paket ermöglicht den Zugriff auf einen lokalen DNS-Server über einen
  TLS-Tunnel.
+Tag: suite::iserv

@@ -1,0 +1,3 @@
+# Allow DNS over TLS
+domain (ip ip6) table filter chain input_exam proto tcp dport (853) RETURN;
+
