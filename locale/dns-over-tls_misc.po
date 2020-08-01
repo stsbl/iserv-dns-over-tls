@@ -1,5 +1,0 @@
-msgid "Enable DNSSEC validation"
-msgstr "DNSSEC-Validierung aktivieren"
-
-msgid "This settings toggles the DNSSEC validation of upstream DNS zones."
-msgstr "Die Einstellung aktiviert oder deaktiviert die DNSSEC-Validerung von vorgelagerten DNS-Zonen."
