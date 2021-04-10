@@ -2,27 +2,26 @@ Source: stsbl-iserv-dns-over-tls
 Section: misc
 Priority: optional
 Maintainer: Stadtteilschule Blankenese <repository@stsbl.de>
-Build-Depends: debhelper (>= 10)
-Build-Depends-Indep: iserv-buildtools
-Standards-Version: 4.4.1
+Build-Depends: debhelper-compat (= 13), dh-sequence-iserv, dh-sequence-stsbl
+Standards-Version: 4.5.0
 
 Package: stsbl-iserv-dns-over-tls
 Architecture: all
-Depends: ${misc:Depends},
-  ${perl:Depends},
-  iserv-update,
-  iserv-server-incron,
-  iserv-server-ferm (>= 19.05.14),
-  libclone-perl,
-  libdata-compare-perl,
-  libiserv-dialog-perl,
-  libjson-perl,
-  libnet-ip-perl,
-  libpath-tiny-perl,
-  resolvconf,
-  stsbl-iserv-dns-over-tls-tunnel (= ${source:Version}),
-  stsbl-iserv-server-unbound,
-Xb-Private-IServ-Revision: ${iserv:Revision}
+Depends: iserv-server-ferm (>= 19.05.14),
+         iserv-server-incron,
+         iserv-update,
+         libclone-perl,
+         libdata-compare-perl,
+         libiserv-dialog-perl,
+         libjson-perl,
+         libnet-ip-perl,
+         libpath-tiny-perl,
+         resolvconf,
+         stsbl-iserv-dns-over-tls-tunnel (= ${source:Version}),
+         stsbl-iserv-server-unbound,
+         ${misc:Depends},
+         ${perl:Depends}
+Xb-Private-Iserv-Revision: ${iserv:Revision}
 Description: IServ Unterstützung für verschlüsseltes DNS
  Erlaubt das Abfragen des DNS-Servers auf dem IServ per verschlüsselter
  Verbindung über DNS-over-TLS.
@@ -33,13 +32,13 @@ Tag: suite::iserv:portal, role::plugin
 
 Package: stsbl-iserv-dns-over-tls-tunnel
 Architecture: all
-Depends: ${misc:Depends},
-  ${perl:Depends},
-  iserv-update,
-  stsbl-iserv-server-stunnel,
-Breaks: stsbl-iserv-dns-over-tls (<= 19.05.24),
-Replaces: stsbl-iserv-dns-over-tls (<= 19.05.24),
-Xb-Private-IServ-Revision: ${iserv:Revision}
+Depends: iserv-update,
+         stsbl-iserv-server-stunnel,
+         ${misc:Depends},
+         ${perl:Depends}
+Breaks: stsbl-iserv-dns-over-tls (<= 19.05.24)
+Replaces: stsbl-iserv-dns-over-tls (<= 19.05.24)
+Xb-Private-Iserv-Revision: ${iserv:Revision}
 Description: IServ Unterstützung für verschlüsseltes DNS
  Erlaubt das Abfragen des DNS-Servers auf dem IServ per verschlüsselter
  Verbindung über DNS-over-TLS.
