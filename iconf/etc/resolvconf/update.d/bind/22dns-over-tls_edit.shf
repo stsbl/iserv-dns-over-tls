@@ -1,7 +1,0 @@
-#!/bin/sh
-
-sed -E 's#^RSLVCNFFILES=(.+)$#RSLVCNFFILES="$(/lib/resolvconf/list-records | grep -E "^lo.unbound.")"\
-if [ -z "$RSLVCNFFILES" ]\
-then\
-  RSLVCNFFILES=\1\
-fi#g'
