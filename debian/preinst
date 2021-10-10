@@ -3,7 +3,7 @@ set -e
 
 if [ install = "$1" -o upgrade = "$1" ]
 then
-  dpkg-divert --remove \
+  dpkg-divert --no-rename --remove \
      --divert /etc/resolvconf/update.d/bind.distrib /etc/resolvconf/update.d/bind
 fi
 
