@@ -1,3 +1,9 @@
+stsbl-iserv-dns-over-tls (21.10.10.2) stable; urgency=medium
+
+  * Fixed bind hook on Debian Bullseye
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Sun, 10 Oct 2021 21:02:34 +0200
+
 stsbl-iserv-dns-over-tls (21.10.10.1) stable; urgency=medium
 
   * Fixed service start on bullseye
