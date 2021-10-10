@@ -1,0 +1,3 @@
+Remove /etc/resolvconf/update.d/bind.distrib
+Remove /etc/resolvconf/update.d/bind.dpkg-old
+
