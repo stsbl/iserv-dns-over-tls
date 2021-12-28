@@ -1,3 +1,10 @@
+stsbl-iserv-dns-over-tls (21.12.28.1) stable; urgency=medium
+
+  * iservchk bind: Fixed configuring bind when diverted script is not in
+    place
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Tue, 28 Dec 2021 05:25:27 +0100
+
 stsbl-iserv-dns-over-tls (21.10.10.3) stable; urgency=medium
 
   * Fixed dpkg-divert deprecation
