@@ -7,7 +7,7 @@ then
   ServiceName=bind9
 fi
 
-if ! [ -f "/usr/share/iserv/iconf/etc/resolvconf/update.d/bind/20portal" ] && [ -f "/etc/resolvconf/update.d/bind.distrib" ]
+if ! [ -f "/usr/share/iserv/iconf/etc/resolvconf/update.d/bind/20portal" ]
 then
   echo "Check /etc/resolvconf/update.d/bind"
   echo "ChPerm 0755 root:root /etc/resolvconf/update.d/bind"
