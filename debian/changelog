@@ -1,3 +1,10 @@
+stsbl-iserv-dns-over-tls (22.11.27.1) stable; urgency=medium
+
+  * Guard unbound-control calls with timeout to prevent hangup when
+    unbound is crashing
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Sun, 27 Nov 2022 21:14:25 +0100
+
 stsbl-iserv-dns-over-tls (22.09.18.1) stable; urgency=medium
 
   * Added support for new iserv-server-bind package
