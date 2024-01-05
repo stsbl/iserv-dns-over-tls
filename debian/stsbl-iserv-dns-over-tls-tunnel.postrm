@@ -4,10 +4,10 @@ set -e
 if [ "$1" = "remove" ] || [ "$1" = "purge" ]
 then
   rm -f /etc/stunnel/iserv-dns-over-tls.conf
-  if ! [ /etc/stunnel/iserv-dns-over-tls.conf* = "/etc/stunnel/iserv-dns-over-tls.conf*" ]
-  then
-    rm -f /etc/stunnel/iserv-dns-over-tls.conf*
-  fi
+  for f in /etc/stunnel/iserv-dns-over-tls.conf*
+  do
+    rm -f "$f"
+  done
 fi
 
 #DEBHELPER#
