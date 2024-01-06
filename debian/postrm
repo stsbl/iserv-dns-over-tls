@@ -14,9 +14,7 @@ esac
 case "$1" in
   remove|purge)
     rm -f /etc/resolvconf/update.d/unbound-iserv
-    rm -f /etc/stunnel/iserv-dns-over-tls.conf
     systemctl daemon-reload
-    deb-systemd-invoke restart stunnel4 || true
   ;;
 esac
 

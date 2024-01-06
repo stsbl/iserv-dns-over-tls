@@ -8,6 +8,7 @@ then
   do
     rm -f "$f"
   done
+  deb-systemd-invoke restart stunnel4 || true
 fi
 
 #DEBHELPER#
