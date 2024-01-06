@@ -19,7 +19,7 @@ Depends: iserv-server-bind,
          libnet-ip-perl,
          libpath-tiny-perl,
          resolvconf,
-         bind9 (>= 9.18) | stsbl-iserv-dns-over-tls-tunnel (= ${source:Version}),
+         bind9 (>= 1:9.18) | stsbl-iserv-dns-over-tls-tunnel (= ${source:Version}),
          stsbl-iserv-server-unbound,
          ${misc:Depends},
          ${perl:Depends}
