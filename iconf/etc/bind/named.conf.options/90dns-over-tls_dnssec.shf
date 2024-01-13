@@ -2,7 +2,7 @@
 
 . /usr/lib/iserv/cfg
 
-if [ $DNSSECEnable ]
+if [ "$DNSSECEnable" ]
 then
   sed -E -r '/^options \{$/,/^(\s+)dnssec-validation\s/ {
     /^(\s+)dnssec-validation\s/ {
