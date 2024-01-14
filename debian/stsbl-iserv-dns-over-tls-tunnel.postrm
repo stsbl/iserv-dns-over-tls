@@ -13,7 +13,7 @@ then
   # stunnel4 unit lefts its children behind sometimes...
   grep -l '^/usr/bin/stunnel4'"$(printf "\0")"'/etc/stunnel/iserv-dns-over-tls.conf$' /proc/*/cmdline ||: |
       awk -F/ '{ print $3 }' |
-      xargs kill
+      xargs -r kill
 fi
 
 #DEBHELPER#
