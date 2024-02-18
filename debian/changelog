@@ -1,3 +1,9 @@
+stsbl-iserv-dns-over-tls (24.02.18.2) stable; urgency=medium
+
+  * Removed listening to DoH/DoQ port for IPv4 (not used currently)
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Sun, 18 Feb 2024 14:37:31 +0100
+
 stsbl-iserv-dns-over-tls (24.02.18.1) stable; urgency=medium
 
   * Removed listening to DoH/DoQ port (not used currently)
