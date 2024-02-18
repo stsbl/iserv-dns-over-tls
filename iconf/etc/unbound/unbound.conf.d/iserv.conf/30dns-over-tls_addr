@@ -3,5 +3,7 @@
     ip-address: 127.0.2.1@853
     # ::1@53 is maybe taken by BIND
     ip-address: ::1@1053
-    ip-address: ::1@853
+    # Currently not needed and already taken by other resolvers serving queries
+    # on [::]
+    #ip-address: ::1@853
 
