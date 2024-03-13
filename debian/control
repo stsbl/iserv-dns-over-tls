@@ -8,7 +8,7 @@ Homepage: https://it.stsbl.de/
 
 Package: stsbl-iserv-dns-over-tls
 Architecture: all
-Depends: iserv-server-bind,
+Depends: iserv-server-bind (>= 23.01.13),
          iserv-server-ferm (>= 19.05.14),
          iserv-server-incron,
          iserv-update,
