@@ -1,3 +1,10 @@
+stsbl-iserv-dns-over-tls (24.03.13.1) stable; urgency=medium
+
+  * Replaced stunnel workaround with native DoH/DoT support of iserv-
+    server-bind
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Wed, 13 Mar 2024 03:34:37 +0100
+
 stsbl-iserv-dns-over-tls (24.02.18.2) stable; urgency=medium
 
   * Removed listening to DoH/DoQ port for IPv4 (not used currently)
