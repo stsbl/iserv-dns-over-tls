@@ -1,3 +1,9 @@
+stsbl-iserv-dns-over-tls (26.10.28.1) UNRELEASED; urgency=medium
+
+  * Refresh BIND and TLS tunnel configuration through IPv6 hooks.
+
+ -- Stadtteilschule Blankenese <repository@stsbl.de>  Wed, 28 Oct 2026 12:00:00 +0100
+
 stsbl-iserv-dns-over-tls (24.03.13.1) stable; urgency=medium
 
   * Replaced stunnel workaround with native DoH/DoT support of iserv-

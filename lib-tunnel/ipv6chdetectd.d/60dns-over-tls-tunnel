@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+. /usr/lib/iserv/ipv6chdetectd-functions
+[ "$IPV6CHDETECTD_PHASE" = configure ] || exit 0
+ipv6_config stunnel4.service restart /etc/stunnel/iserv-dns-over-tls.conf

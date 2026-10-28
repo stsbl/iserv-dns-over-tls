@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+. /usr/lib/iserv/ipv6chdetectd-functions
+[ "$IPV6CHDETECTD_PHASE" = configure ] || exit 0
+
+if iservpkginstalled iserv-server-bind; then
+  ipv6_config bind9.service reload /etc/bind/includes/acls.conf
+  ipv6_validate bind9.service named-checkconf
+fi
+if iservpkginstalled stunnel4; then
+  ipv6_config stunnel4.service restart /etc/stunnel/iserv-dns-over-tls.conf
+fi

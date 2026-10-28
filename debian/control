@@ -8,7 +8,7 @@ Homepage: https://it.stsbl.de/
 
 Package: stsbl-iserv-dns-over-tls
 Architecture: all
-Depends: iserv-server-bind (>= 23.01.13),
+Depends: ipv6chdetectd (>= 26.10.28.1), iserv-server-bind (>= 23.01.13),
          iserv-server-ferm (>= 19.05.14),
          iserv-server-incron,
          iserv-update,
@@ -34,7 +34,7 @@ Tag: suite::iserv:portal, role::plugin
 
 Package: stsbl-iserv-dns-over-tls-tunnel
 Architecture: all
-Depends: iserv-update,
+Depends: ipv6chdetectd (>= 26.10.28.1), iserv-update,
          stsbl-iserv-server-stunnel,
          ${misc:Depends},
          ${perl:Depends}
